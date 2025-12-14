@@ -1,4 +1,4 @@
-# Personal RAG Knowledge Base - 私人 RAG 知识库系统(让你的知识不再沉睡，从今天开始构建属于自己的 AI 私人知识库吧！)
+# Personal RAG Knowledge Base - 私人 RAG 知识库系统(让你的知识不再沉睡！)
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.52-red)
@@ -6,6 +6,17 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 一个完全本地运行、隐私安全的**个人 RAG（Retrieval-Augmented Generation）知识库系统**。让你把散落的文档、笔记、报告、书籍全部上传，形成一个专属的“第二大脑”，随时用自然语言提问，就能得到精准、带原文出处的答案。
+
+## 📸 系统截图
+
+### 智能问答页面
+![智能问答](screenshots/s1.png)
+
+### 知识库管理后台（文档上传、分页搜索、删除）
+![知识库管理后台](screenshots/s2.png)
+
+### 系统设置页面（多模型切换、代理配置、连接测试）
+![系统设置页面](screenshots/s3.png)
 
 ## 🌟 核心亮点
 
@@ -16,7 +27,7 @@
 - **内置代理支持**：HTTP/HTTPS/SOCKS5 全协议支持 + 一键测试连接，国内使用无压力
 - **持久化配置**：模型、API Key、代理设置永久保存，重启后自动加载
 - **优雅的 Web 界面**（Streamlit）：
-  - 首页直接进入智能问答
+  - 直接进入智能问答
   - 管理后台：文档上传/搜索/分页查看/删除 + 系统设置
 - **开箱即用**：几分钟部署，无需复杂配置
 
