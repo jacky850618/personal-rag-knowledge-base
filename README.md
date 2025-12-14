@@ -1,4 +1,4 @@
-# Personal RAG Knowledge Base - 私人 RAG 知识库系统(让你的知识不再沉睡！)
+# KnowBase - 私人 RAG 知识库系统(让你的知识不再沉睡！)
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.52-red)
