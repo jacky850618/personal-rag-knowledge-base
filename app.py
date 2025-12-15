@@ -37,7 +37,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto",
     menu_items={
-        'About': "# 基于 RAG + DeepSeek/ChatGPT 的知识库系统\n由 Grok 协助构建"
+        'About': "# 基于 RAG + DeepSeek/ChatGPT 的知识库系统"
     }
 )
 
@@ -91,7 +91,7 @@ def get_rag_chain():
 # ==================== 侧边栏导航 ====================
 st.sidebar.title("🗂️ 导航")
 page = st.sidebar.radio(
-    "选择页面",
+    'AI知识库问答系统',
     ["💬 智能问答", "⚙️ 管理后台"],
     index=0
 )
