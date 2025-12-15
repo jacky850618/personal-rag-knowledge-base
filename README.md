@@ -118,15 +118,15 @@ streamlit run app.py
 1. 配置自动永久保存到 config/user_settings.json
 
 ## 🔧 技术亮点
-表格解析：Table Transformer（Microsoft）检测表格结构 + EasyOCR 本地识别文字 → 高精度 Markdown 输出
-图片理解：BLIP（Salesforce）大型模型生成自然语言描述，支持图表、截图、照片等
-文档切分：智能切块 + 附加表格/图片 chunk，确保上下文完整
-完全本地：无任何云 API 调用解析内容，隐私极致安全
+1. 表格解析：Table Transformer（Microsoft）检测表格结构 + EasyOCR 本地识别文字 → 高精度 Markdown 输出
+1. 图片理解：BLIP（Salesforce）大型模型生成自然语言描述，支持图表、截图、照片等
+1. 文档切分：智能切块 + 附加表格/图片 chunk，确保上下文完整
+1. 完全本地：无任何云 API 调用解析内容，隐私极致安全
 
 ## 🤝 贡献
 欢迎 Star、Fork、Issue、PR！
 未来计划：
-1. 多轮对话历史
+1. 多轮对话历史s
 1. 更多本地多模态模型支持
 1. 文档自动摘要与标签
 1. 移动端访问
