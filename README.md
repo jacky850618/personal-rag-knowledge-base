@@ -5,8 +5,10 @@
 ![LangChain](https://img.shields.io/badge/LangChain-1.1-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-一个完全本地运行、隐私安全的**个人 RAG（Retrieval-Augmented Generation）知识库系统**。让你把散落的文档、笔记、报告、书籍全部上传，形成一个专属的“第二大脑”，随时用自然语言提问，就能得到精准、带原文出处的答案。
+一个完全**本地运行**、**极致隐私**的个人 RAG（Retrieval-Augmented Generation）知识库系统。  
+将你的 PDF、报告、笔记、书籍上传后，即可通过自然语言提问，获得精准、带原文出处的智能回答。
 
+**核心亮点**：支持 PDF 中的**表格智能提取**和**图片内容描述**，全部使用本地模型，无需任何云服务！
 ## 📸 系统截图
 
 ### 智能问答页面
@@ -18,42 +20,63 @@
 ### 系统设置页面（多模型切换、代理配置、连接测试）
 ![系统设置页面](screenshots/s3.png)
 
-## 🌟 核心亮点
+## 🌟 核心功能
 
-- **100% 本地存储**：所有文档和向量数据库保存在本地，隐私完全掌握在自己手中
-- **支持多种文档格式**：PDF(支持OCR识别图片)、TXT、MD、DOCX，一键上传自动解析
-- **智能文档切分 + 向量检索**：基于 BGE 嵌入模型，实现高精度语义检索
-- **多大模型随意切换**：一键切换 DeepSeek、OpenAI (ChatGPT)、Groq、Claude、Gemini，永远用当时最好的模型
-- **内置代理支持**：HTTP/HTTPS/SOCKS5 全协议支持 + 一键测试连接，国内使用无压力
-- **持久化配置**：模型、API Key、代理设置永久保存，重启后自动加载
-- **优雅的 Web 界面**（Streamlit）：
-  - 直接进入智能问答
-  - 管理后台：文档上传/搜索/分页查看/删除 + 系统设置
-- **开箱即用**：几分钟部署，无需复杂配置
+- **100% 本地运行 & 隐私保护**  
+  所有文档、向量数据库、模型推理都在你的电脑上完成，数据永不离开本地。
 
-## 🎯 适合谁用？
+- **深度理解 PDF 内容**  
+  - **表格解析**：自动将 PDF 中的表格转为清晰 Markdown 格式，AI 可直接阅读并回答“表格里 Q3 收入是多少？”等问题  
+  - **图片描述**：使用本地 BLIP 模型自动生成图片内容描述（如“一张柱状图显示2024年各季度销售额”），支持提问图片含义
 
-- 知识工作者：快速查找历史报告、会议纪要、合同条款
-- 学生/研究员：管理海量论文、笔记、书籍，提问即得精准引用
-- 家长/生活达人：存育儿经验、健康档案、旅行攻略、菜谱
-- 投资爱好者：整理研报、财报、投资笔记，一问即答
-- 所有想把个人知识数字化、可检索的人
+- **高精度语义检索**  
+  基于 BGE 嵌入模型，实现精准语义匹配，即使问题表述不同也能找到相关内容。
 
-用得越久，系统越懂你 —— 它会成为你数字人生中最有价值的私人助手。
+- **多大模型随意切换**  
+  一键切换 DeepSeek、OpenAI (ChatGPT)、Groq、Claude、Gemini，永远用当时最强的模型。
+
+- **优雅的 Web 界面**（Streamlit）  
+  - 首页直接进入智能问答  
+  - 管理后台：文档上传、分页搜索、预览、删除
+
+- **开箱即用**  
+  几分钟部署，首次运行自动下载所需模型，后续秒开。
+
+## 🎯 最适合的场景
+
+处理大量带表格的报告（财报、科研论文、市场分析、项目总结）
+管理图文并茂的文档（产品手册、教程、会议记录、设计稿）
+快速查询 PDF 中的具体数据、图表含义或图片内容
+知识工作者、学生、研究员、产品经理、咨询顾问、投资爱好者
 
 ## 🚀 快速开始
 
 ### 1. 克隆仓库
 ```bash
-git clone https://github.com/jacky850618/personal-rag-knowledge-base.git
-cd personal-rag-knowledge-base
+git clone https://github.com/jacky850618/KnowBase.git
+cd KnowBase
 ```
 
 ### 2. 安装依赖（推荐新建虚拟环境）
+#### 安装 Poppler
+1. macOS（最简单）
+```
+brew install poppler
 ```
 
-brew install poppler
+2. Windows
+```
+conda install -c conda-forge poppler
+```
 
+3. Linux（Ubuntu/Debian）
+```
+sudo apt update
+sudo apt install poppler-utils
+```
+
+#### 安装依赖
+```
 pip install -r requirements.txt
 ```
 
@@ -69,10 +92,14 @@ streamlit run app.py
 ```
 
 打开浏览器访问 http://localhost:8501，即可开始使用！
-第一次运行会自动下载 BGE 嵌入模型（约 1GB），后续即秒开。
 
+首次运行会自动下载：
+1. BGE 嵌入模型（~1GB）
+1. BLIP 图片描述模型（~1GB）
+1. Table Transformer 表格检测模型（~400MB）
+后续启动即秒开。
 
-## 项目结构
+## 📁 项目结构
 ```
 .
 ├── app.py                  # 主界面（智能问答 + 管理后台）
@@ -90,9 +117,19 @@ streamlit run app.py
 1. 支持代理：填写主机、端口、协议（http/https/socks5）
 1. 配置自动永久保存到 config/user_settings.json
 
+## 🔧 技术亮点
+表格解析：Table Transformer（Microsoft）检测表格结构 + EasyOCR 本地识别文字 → 高精度 Markdown 输出
+图片理解：BLIP（Salesforce）大型模型生成自然语言描述，支持图表、截图、照片等
+文档切分：智能切块 + 附加表格/图片 chunk，确保上下文完整
+完全本地：无任何云 API 调用解析内容，隐私极致安全
+
 ## 🤝 贡献
 欢迎 Star、Fork、Issue、PR！
-如果你有好的想法（比如添加聊天历史、加密存储等），非常欢迎一起完善这个私人知识库。
+未来计划：
+1. 多轮对话历史
+1. 更多本地多模态模型支持
+1. 文档自动摘要与标签
+1. 移动端访问
 
 ## 开源协议
 MIT License - 随意使用、修改、商用均可。
